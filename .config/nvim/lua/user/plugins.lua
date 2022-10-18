@@ -80,7 +80,8 @@ return packer.startup(function(use)
   use { "rafamadriz/friendly-snippets", } -- a bunch of snippets to use
   -- Treesitter
   use {
-    "nvim-treesitter/nvim-treesitter"
+    "nvim-treesitter/nvim-treesitter",
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
 
   -- Git
