@@ -54,22 +54,24 @@ keymap("i", "jk", "<ESC>", opts)
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
--- Fzf
-keymap("n", "<leader>ff", ":FzfLua files<CR>", opts)
-keymap("n", "<leader>s", ":FzfLua files<CR>", opts)
-keymap("n", "<leader>fg", ":FzfLua live_grep<CR>", opts)
-keymap("n", "<leader>fb", ":FzfLua buffers<CR>", opts)
+-- Telescope
+local builtin = require('telescope.builtin')
+keymap('n', '<leader>ff', builtin.find_files, {})
+keymap('n', '<leader>fg', builtin.live_grep, {})
+keymap('n', '<leader>fb', builtin.buffers, {})
+keymap('n', '<leader>fh', builtin.help_tags, {})
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
 
 -- DAP
-keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
-keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
-keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
-keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opts)
-keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", opts)
-keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
-keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
-keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
-keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+local dap = require("dap")
+keymap("n", "<leader>db", dap.toggle_breakpoint, opts)
+keymap("n", "<leader>dc", dap.continue, opts)
+keymap("n", "<leader>di", dap.step_into, opts)
+keymap("n", "<leader>do", dap.step_over, opts)
+keymap("n", "<leader>dO", dap.step_out, opts)
+keymap("n", "<leader>dr", dap.repl.toggle, opts)
+keymap("n", "<leader>dl", dap.run_last, opts)
+keymap("n", "<leader>du", require'dapui'.toggle, opts)
+keymap("n", "<leader>dt", dap.terminate, opts)

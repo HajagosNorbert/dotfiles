@@ -47,7 +47,9 @@ return packer.startup(function(use)
     use { "numToStr/Comment.nvim" }
     use { "JoosepAlviste/nvim-ts-context-commentstring" }
     use { "kyazdani42/nvim-web-devicons" }
-    --  use { "kyazdani42/nvim-tree.lua"}
+    use { "kyazdani42/nvim-tree.lua", requires = {
+        'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    }, }
     use { "akinsho/bufferline.nvim" }
     use { "moll/vim-bbye" }
     use { "nvim-lualine/lualine.nvim" }
@@ -88,10 +90,17 @@ return packer.startup(function(use)
     -- Git
     use { "lewis6991/gitsigns.nvim", }
 
-    use { 'ibhagwan/fzf-lua',
-        requires = { 'kyazdani42/nvim-web-devicons' }
+    -- fuzzy finding
+    --[[ use { 'ibhagwan/fzf-lua', ]]
+    --[[     requires = { 'kyazdani42/nvim-web-devicons' } ]]
+    --[[ } ]]
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
-
+    use { 'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+    }
     -- installer for lsp, dap, formatter, linters
     use { "williamboman/mason.nvim" }
     use { "williamboman/mason-lspconfig.nvim" }
