@@ -1,3 +1,7 @@
+vim.g.omni_sql_no_default_maps = 1
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.opt.backup = false                          -- creates a backup file
 vim.opt.cmdheight = 1                           -- more space in the neovim command line for displaying messages
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
@@ -40,3 +44,5 @@ vim.opt.expandtab = true			-- use spaces instead of tabs
 vim.opt.shiftwidth = 4
 vim.opt.autoindent = true
 vim.opt.smartindent = true                      -- make indenting smarter again
+
+
