@@ -40,7 +40,6 @@ if [ -d ~/.bashrc.d ]; then
 fi
 
 # custom aliases
-alias pls='sudo $(history -p !!)'
 alias rm='rmtrash'
 alias rmdir='rmdirtrash'
 
@@ -60,3 +59,17 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(starship init bash)"
 
 alias config='/usr/bin/git --git-dir=/home/ezredes02/.dotfiles/ --work-tree=/home/ezredes02'
+bind '"\C-o":"lfcd\C-m"'
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}

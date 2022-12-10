@@ -13,10 +13,12 @@ if status is-interactive
     # autojump-fish enabled
     source /usr/share/autojump/autojump.fish
 
+    export EDITOR="/usr/bin/nvim"
     export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
     # set prompt to starship
     starship init fish | source
 end
 
 fish_add_path $HOME/.cargo/bin
+fish_add_path $HOME/.local/bin
 alias config='/usr/bin/git --git-dir=/home/ezredes02/.dotfiles/ --work-tree=/home/ezredes02'

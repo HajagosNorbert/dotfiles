@@ -311,8 +311,9 @@ globalkeys = gears.table.join(
         { description = "restore minimized", group = "client" }),
 
     -- Prompt
-    awful.key({ modkey }, "r", function() 
-        awful.spawn("rofi -show drun") end,
+    awful.key({ modkey }, "r", function()
+        awful.spawn("rofi -show drun")
+    end,
         { description = "show rofi runner", group = "launcher" })
     ,
 
@@ -372,7 +373,18 @@ clientkeys = gears.table.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end,
-        { description = "(un)maximize horizontally", group = "client" })
+        { description = "(un)maximize horizontally", group = "client" }),
+
+    -- user defined keyboard shourtcuts
+
+    awful.key({}, "XF86AudioRaiseVolume",
+        function() awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ +3%", false) end,
+        { description = "Increase volume by 3%", group = "volume" }),
+    awful.key({}, "XF86AudioLowerVolume",
+        function() awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ -3%", false) end,
+        { description = "decrease volume by 3%", group = "volume" }),
+    awful.key({}, "XF86AudioMute", function() awful.util.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle", false) end,
+        { description = "mute volume", group = "volume" })
 )
 
 -- Bind all key numbers to tags.
