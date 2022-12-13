@@ -379,12 +379,19 @@ clientkeys = gears.table.join(
 
     awful.key({}, "XF86AudioRaiseVolume",
         function() awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ +3%", false) end,
-        { description = "Increase volume by 3%", group = "volume" }),
+        { description = "Increase volume by 3%", group = "function keys" }),
     awful.key({}, "XF86AudioLowerVolume",
         function() awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ -3%", false) end,
-        { description = "decrease volume by 3%", group = "volume" }),
+        { description = "decrease volume by 3%", group = "function keys" }),
     awful.key({}, "XF86AudioMute", function() awful.util.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle", false) end,
-        { description = "mute volume", group = "volume" })
+        { description = "mute volume", group = "function keys" }),
+
+    awful.key({}, "XF86MonBrightnessUp", function() awful.util.spawn("light -A 10", false) end,
+        { description = "Increase brightness", group = "function keys" }),
+    awful.key({}, "XF86MonBrightnessDown", function() awful.util.spawn("light -U 10", false) end,
+        { description = "decrease brightness", group = "function keys" })
+
+
 )
 
 -- Bind all key numbers to tags.
