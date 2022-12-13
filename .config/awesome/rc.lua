@@ -48,8 +48,8 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "kitty"
-editor = os.getenv("EDITOR") or "vi"
+terminal = "alacritty"
+editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -58,22 +58,23 @@ editor_cmd = terminal .. " -e " .. editor
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
+altkey = "Mod1"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
+    awful.layout.suit.floating,
     awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
     awful.layout.suit.corner.nw,
+    -- awful.layout.suit.spiral,
+    -- awful.layout.suit.magnifier,
+    -- awful.layout.suit.tile.bottom,
+    -- awful.layout.suit.fair,
+    -- awful.layout.suit.fair.horizontal,
+    -- awful.layout.suit.tile.top,
+    -- awful.layout.suit.tile.left,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
@@ -389,9 +390,13 @@ clientkeys = gears.table.join(
     awful.key({}, "XF86MonBrightnessUp", function() awful.util.spawn("light -A 10", false) end,
         { description = "Increase brightness", group = "function keys" }),
     awful.key({}, "XF86MonBrightnessDown", function() awful.util.spawn("light -U 10", false) end,
-        { description = "decrease brightness", group = "function keys" })
+        { description = "decrease brightness", group = "function keys" }),
 
 
+    awful.key({ modkey, altkey }, "f", function() awful.util.spawn("pcmanfm", false) end,
+        { description = "Launch File manager PCManFm", group = "Direct app launch" }),
+    awful.key({ modkey, altkey }, "b", function() awful.util.spawn("google-chrome", false) end,
+        { description = "Launch chrome browser", group = "Direct app launch" })
 )
 
 -- Bind all key numbers to tags.
@@ -512,7 +517,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = { type = { "normal", "dialog" }
-    }, properties = { titlebars_enabled = true }
+    }, properties = { titlebars_enabled = false }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
