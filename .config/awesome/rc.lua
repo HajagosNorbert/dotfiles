@@ -387,9 +387,9 @@ clientkeys = gears.table.join(
     awful.key({}, "XF86AudioMute", function() awful.util.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle", false) end,
         { description = "mute volume", group = "function keys" }),
 
-    awful.key({}, "XF86MonBrightnessUp", function() awful.util.spawn("light -A 10", false) end,
+    awful.key({}, "XF86MonBrightnessUp", function() awful.util.spawn("light -A 5", false) end,
         { description = "Increase brightness", group = "function keys" }),
-    awful.key({}, "XF86MonBrightnessDown", function() awful.util.spawn("light -U 10", false) end,
+    awful.key({}, "XF86MonBrightnessDown", function() awful.util.spawn("light -U 5", false) end,
         { description = "decrease brightness", group = "function keys" }),
 
 
@@ -589,6 +589,8 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+-- other user defined settings
 
 -- Autostart Applications
 awful.spawn.with_shell("picom")
