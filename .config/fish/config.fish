@@ -17,4 +17,4 @@ end
 
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/bin
-alias config='/usr/bin/git --git-dir=/home/ezredes02/.dotfiles/ --work-tree=/home/ezredes02'
+alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
