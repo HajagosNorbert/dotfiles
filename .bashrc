@@ -50,15 +50,15 @@ alias l='ls -CF'
 
 unset rc
 
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="/usr/share/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
 # starship as default prompt
 eval "$(starship init bash)"
 
-alias config='/usr/bin/git --git-dir=/home/ezredes02/.dotfiles/ --work-tree=/home/ezredes02'
+alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 bind '"\C-o":"lfcd\C-m"'
 lfcd () {
     tmp="$(mktemp)"
