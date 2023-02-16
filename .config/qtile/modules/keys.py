@@ -1,5 +1,6 @@
 from libqtile.lazy import lazy
 from libqtile.config import Key
+import os
 
 mod = "mod4"
 terminal = "xfce4-terminal"
@@ -68,17 +69,23 @@ keys = [
     Key([mod, "shift", "control"], "l", lazy.layout.swap_column_right()),
     Key([mod, "shift"], "space", lazy.layout.flip()),
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod, "control"], "q",lazy.spawn(os.path.expanduser('~/.config/rofi/powermenu.sh')) , desc="Bring up power menu"),
     Key([mod, "shift"],
         "r",
         lazy.spawncmd(),
         desc="Spawn a command using a prompt widget"),
 
+
     # Volume
     Key([], "XF86AudioRaiseVolume",lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +3%"), desc="Increase master volume"),
     Key([], "XF86AudioLowerVolume",lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -3%"), desc="Decrease master volume"),
     Key([], "XF86AudioMute",lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle"), desc="Mute volume"),
+
     # Brightness
-    Key([], "XF86MonBrightnessUp",lazy.spawn("brightnessctl set 5%+"), desc="Increase brightness"),
-    Key([], "XF86MonBrightnessDown",lazy.spawn("brightnessctl set 5%-"), desc="Decrease brightness"),
+    Key([], "XF86MonBrightnessUp",lazy.spawn("brightnessctl set 1%+"), desc="Increase brightness"),
+    Key([], "XF86MonBrightnessDown",lazy.spawn("brightnessctl set 1%-"), desc="Decrease brightness"),
+
+    # Screenshot
+    Key([], "Print",lazy.spawn("xfce4-screenshooter"), desc="Take a screenshot"),
+
 ]
