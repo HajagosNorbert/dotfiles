@@ -3,7 +3,7 @@ from libqtile.config import Key
 import os
 
 mod = "mod4"
-terminal = "xfce4-terminal"
+terminal = "alacritty"
 
 keys = [
     # Switch between windows

@@ -12,6 +12,7 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 auto_fullscreen = True
+auto_minimize = False
 focus_on_window_activation = "smart"
 wmname = "Qtile"
 widget_defaults = dict(

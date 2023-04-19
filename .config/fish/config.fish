@@ -1,7 +1,18 @@
+# The following snippet is meant to be used like this in your fish config:
+#
+#     eval (zellij setup --generate-auto-start fish | string collect)
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    set -U fish_greeting ""
     
+    set ZELLIJ_AUTO_ATTACH true
+    if not set -q ZELLIJ
+        if test "$ZELLIJ_AUTO_ATTACH" = "true"
+            zellij attach -c
+        else
+            zellij
+        end
+    end
     # aliases
 
     alias v='nvim'
