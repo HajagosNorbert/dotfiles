@@ -769,7 +769,8 @@ font:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
 key_bindings:
-  - { key: F11, action: ToggleFullscreen }
+  #- { key: F11, action: ToggleFullscreen }
+  - { key: F11, mods: Super, action: ToggleFullscreen }
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }

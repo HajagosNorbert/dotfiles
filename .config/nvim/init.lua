@@ -1,4 +1,24 @@
-require "user.plugins"
+require "ez"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--[[ require "user.plugins"
 require "user.options"
 require "user.keymaps"
 require "user.autocommands"
@@ -21,4 +41,4 @@ require "user.indentline"
 require "user.alpha"
 require "user.lsp"
 require "user.dap"
-require "user.rust-tools"
+require "user.rust-tools" ]]
