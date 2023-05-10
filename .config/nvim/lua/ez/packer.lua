@@ -25,7 +25,7 @@ return require('packer').startup(function(use)
             -- LSP Support
             { 'neovim/nvim-lspconfig' }, -- Required
             {
-                                         -- Optional
+                -- Optional
                 'williamboman/mason.nvim',
                 run = function()
                     pcall(vim.cmd, 'MasonUpdate')
@@ -40,6 +40,9 @@ return require('packer').startup(function(use)
         }
     }
     use {
+        "ray-x/lsp_signature.nvim",
+    }
+    use {
         'nvim-tree/nvim-tree.lua',
         requires = {
             'nvim-tree/nvim-web-devicons'
@@ -51,6 +54,22 @@ return require('packer').startup(function(use)
     use { 'rcarriga/nvim-dap-ui' }
     use { 'theHamsta/nvim-dap-virtual-text' }
     use { 'nvim-telescope/telescope-dap.nvim' }
+
+    use { 'windwp/nvim-ts-autotag',
+        requires = { { 'nvim-treesitter/nvim-treesitter' } },
+        config = function()
+            require('nvim-ts-autotag').setup()
+        end
+    }
+
+    use {
+        "windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup {
+                enable_moveright = false,
+            }
+        end
+    }
 
     use {
         'numToStr/Comment.nvim',

@@ -1,4 +1,6 @@
-local lsp = require('lsp-zero').preset({})
+local lsp = require('lsp-zero').preset({
+    name = 'recommended',
+})
 
 lsp.on_attach(function(client, bufnr)
     lsp.default_keymaps({ buffer = bufnr })
@@ -15,6 +17,26 @@ end)
 
 -- (Optional) Configure lua language server for neovim
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+-- Make sure you setup `cmp` after lsp-zero
+local cmp = require('cmp')
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
+cmp.setup({
+    mapping = {
+        -- `Enter` key to confirm completion
+        ['<C-Space>'] = cmp.mapping.confirm({ select = false }),
+    }
+})
+
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+
+require "lsp_signature".setup({
+    bind = true, -- This is mandatory, otherwise border config won't get registered.
+    handler_opts = {
+        border = "rounded"
+    }
+})
 
 --[[
 require('lspconfig').omnisharp.setup({

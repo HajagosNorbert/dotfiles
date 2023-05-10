@@ -17,3 +17,8 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 5
 
 vim.opt.updatetime = 50
+
+vim.opt.whichwrap = "b,s,h,l"
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
