@@ -1,33 +1,27 @@
 return {
     {
-        'rose-pine/neovim',
+        "folke/tokyonight.nvim",
+        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
-            vim.cmd('colorscheme rose-pine')
-        end
+            -- load the colorscheme here
+            vim.cmd([[colorscheme tokyonight-night]])
+        end,
     },
-
 
     {
         'windwp/nvim-ts-autotag',
-        dependencies = { { 'nvim-treesitter/nvim-treesitter' } },
-        config = function()
-            require('nvim-ts-autotag').setup()
-        end
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        config = true
     },
 
     {
         "windwp/nvim-autopairs",
-        config = function()
-            require("nvim-autopairs").setup {
-                enable_moveright = false,
-            }
-        end
+        config = true
     },
 
     {
         'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
+        config = true
     }
 }
