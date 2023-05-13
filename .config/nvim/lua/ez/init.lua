@@ -1,4 +1,4 @@
-require "ez.packer"
-require "ez.keymaps"
-require "ez.options"
-require "ez.autocmds"
+require "ez.config.keymaps"
+require "ez.config.options"
+require "ez.config.autocmds"
+require "ez.config.lazy"
