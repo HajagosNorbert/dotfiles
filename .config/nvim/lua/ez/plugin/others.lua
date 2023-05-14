@@ -7,18 +7,11 @@ return {
             vim.cmd([[colorscheme tokyonight-night]])
         end,
     },
-
     {
         'windwp/nvim-ts-autotag',
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
         config = true
     },
-
-    {
-        "windwp/nvim-autopairs",
-        config = true
-    },
-
     {
         'numToStr/Comment.nvim',
         config = true

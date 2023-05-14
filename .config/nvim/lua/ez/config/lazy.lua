@@ -14,5 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 spec = {
     { import = "ez.plugin" },
+    { import = "ez.plugin.lang" },
   },
 })
