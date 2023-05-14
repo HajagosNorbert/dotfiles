@@ -76,31 +76,13 @@ return {
                     pcall(vim.cmd, 'MasonUpdate')
                 end,
             },
-            { 'simrat39/rust-tools.nvim' }
         },
-        config = function()
-            local lsp = require('lsp-zero').preset({
-            }
-            -- {
-            --                 float_border = 'rounded',
-            --                 call_servers = 'local',
-            --                 configure_diagnostics = true,
-            --                 setup_servers_on_start = true,
-            --                 set_lsp_keymaps = {
-            --                     preserve_mappings = false,
-            --                     omit = {},
-            --                 },
-            --                 manage_nvim_cmp = {
-            --                     set_sources = 'recommended',
-            --                     set_basic_mappings = true,
-            --                     set_extra_mappings = false,
-            --                     use_luasnip = true,
-            --                     set_format = true,
-            --                     documentation_window = true,
-            --                 },
-            --             }
-
-            )
+        opts = {
+            -- custom variable to populate by extensions
+            skip_servers_from_autoconf = {}
+        },
+        config = function(_, opts)
+            local lsp = require('lsp-zero').preset({})
 
             lsp.on_attach(function(_, bufnr)
                 lsp.default_keymaps({ buffer = bufnr })
@@ -114,39 +96,30 @@ return {
 
             -- (Optional) Configure lua language server for neovim
             require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-            lsp.skip_server_setup({ 'rust_analyzer' })
+            lsp.skip_server_setup(opts.skip_servers_from_autoconf)
             lsp.setup()
 
-            local rust_tools = require('rust-tools')
-
-            rust_tools.setup({
-                server = {
-                    on_attach = function()
-                        vim.keymap.set('n', '<leader>ca', rust_tools.hover_actions.hover_actions, { buffer = bufnr })
-                    end
-                }
-            })
         end
     },
     {
         "ray-x/lsp_signature.nvim",
         opts = {
             bind = true, -- This is mandatory, otherwise border config won't get registered.
-                float_border = 'rounded',
-                call_servers = 'local',
-                configure_diagnostics = false,
-                setup_servers_on_start = false,
-                set_lsp_keymaps = {
-                    preserve_mappings = false,
-                    omit = {},
-                },
-                manage_nvim_cmp = {
-                    set_basic_mappings = false,
-                    set_extra_mappings = false,
-                    use_luasnip = false,
-                    set_format = false,
-                    documentation_window = false,
-                },
+            float_border = 'rounded',
+            call_servers = 'local',
+            configure_diagnostics = false,
+            setup_servers_on_start = false,
+            set_lsp_keymaps = {
+                preserve_mappings = false,
+                omit = {},
+            },
+            manage_nvim_cmp = {
+                set_basic_mappings = false,
+                set_extra_mappings = false,
+                use_luasnip = false,
+                set_format = false,
+                documentation_window = false,
+            },
             handler_opts = {
                 border = "rounded"
             }
