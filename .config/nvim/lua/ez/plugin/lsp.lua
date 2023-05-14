@@ -3,29 +3,29 @@ return {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
         lazy = true,
-        config = function()
-            -- This is where you modify the settings for lsp-zero
-            -- Note: autocompletion settings will not take effect
-
-            require('lsp-zero.settings').preset({
-                float_border = 'rounded',
-                call_servers = 'local',
-                configure_diagnostics = true,
-                setup_servers_on_start = true,
-                set_lsp_keymaps = {
-                    preserve_mappings = false,
-                    omit = {},
-                },
-                manage_nvim_cmp = {
-                    set_sources = 'recommended',
-                    set_basic_mappings = true,
-                    set_extra_mappings = false,
-                    use_luasnip = true,
-                    set_format = true,
-                    documentation_window = true,
-                },
-            })
-        end
+        -- config = function()
+        --     -- This is where you modify the settings for lsp-zero
+        --     -- Note: autocompletion settings will not take effect
+        --
+        --     require('lsp-zero.settings').preset({
+        --         float_border = 'rounded',
+        --         call_servers = 'local',
+        --         configure_diagnostics = true,
+        --         setup_servers_on_start = true,
+        --         set_lsp_keymaps = {
+        --             preserve_mappings = false,
+        --             omit = {},
+        --         },
+        --         manage_nvim_cmp = {
+        --             set_sources = 'recommended',
+        --             set_basic_mappings = true,
+        --             set_extra_mappings = false,
+        --             use_luasnip = true,
+        --             set_format = true,
+        --             documentation_window = true,
+        --         },
+        --     })
+        -- end
     },
 
     -- Autocompletion
@@ -79,7 +79,28 @@ return {
             { 'simrat39/rust-tools.nvim' }
         },
         config = function()
-            local lsp = require('lsp-zero')
+            local lsp = require('lsp-zero').preset({
+            }
+            -- {
+            --                 float_border = 'rounded',
+            --                 call_servers = 'local',
+            --                 configure_diagnostics = true,
+            --                 setup_servers_on_start = true,
+            --                 set_lsp_keymaps = {
+            --                     preserve_mappings = false,
+            --                     omit = {},
+            --                 },
+            --                 manage_nvim_cmp = {
+            --                     set_sources = 'recommended',
+            --                     set_basic_mappings = true,
+            --                     set_extra_mappings = false,
+            --                     use_luasnip = true,
+            --                     set_format = true,
+            --                     documentation_window = true,
+            --                 },
+            --             }
+
+            )
 
             lsp.on_attach(function(_, bufnr)
                 lsp.default_keymaps({ buffer = bufnr })
@@ -87,8 +108,8 @@ return {
                 vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename)
                 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
                 vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action)
-                vim.keymap.set('n', ',n', vim.diagnostic.goto_next)
-                vim.keymap.set('n', ',p', vim.diagnostic.goto_prev)
+                vim.keymap.set('n', 'án', vim.diagnostic.goto_next)
+                vim.keymap.set('n', 'áp', vim.diagnostic.goto_prev)
             end)
 
             -- (Optional) Configure lua language server for neovim
@@ -111,6 +132,21 @@ return {
         "ray-x/lsp_signature.nvim",
         opts = {
             bind = true, -- This is mandatory, otherwise border config won't get registered.
+                float_border = 'rounded',
+                call_servers = 'local',
+                configure_diagnostics = false,
+                setup_servers_on_start = false,
+                set_lsp_keymaps = {
+                    preserve_mappings = false,
+                    omit = {},
+                },
+                manage_nvim_cmp = {
+                    set_basic_mappings = false,
+                    set_extra_mappings = false,
+                    use_luasnip = false,
+                    set_format = false,
+                    documentation_window = false,
+                },
             handler_opts = {
                 border = "rounded"
             }
