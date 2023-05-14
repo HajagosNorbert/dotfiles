@@ -30,68 +30,41 @@ return {
         },
         config = function()
             local rust_tools = require('rust-tools')
+            local codelldb_path, liblldb_path = get_codelldb()
 
             rust_tools.setup({
+                tools = {
+                    on_initialized = function()
+                        vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
+                            pattern = { "*.rs" },
+                            callback = function()
+                                local _, _ = pcall(vim.lsp.codelens.refresh)
+                            end,
+                        })
+                    end,
+                },
                 server = {
-                    on_attach = function()
-                        vim.keymap.set('n', '<leader>ca', rust_tools.hover_actions.hover_actions, { buffer = bufnr })
-                    end
-                }
+                    on_attach = function(_, bufnr)
+                        vim.keymap.set('n', '<leader>K', rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+                        vim.keymap.set("n", "<leader>cl", function() vim.lsp.codelens.run() end,
+                            { buffer = bufnr, desc = "Code Lens" })
+                    end,
+                    settings = {
+                        ["rust-analyzer"] = {
+                            lens = {
+                                enable = true,
+                            },
+                            checkOnSave = {
+                                enable = true,
+                                command = "clippy",
+                            },
+                        },
+                    },
+                },
+                dap = {
+                    adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
+                },
             })
         end
     }
-    -- {
-    --     "neovim/nvim-lspconfig",
-    --     dependencies = { "simrat39/rust-tools.nvim" },
-    --     opts = {
-    --         servers = {
-    --             rust_analyzer = {
-    --                 settings = {
-    --                     ["rust-analyzer"] = {
-    --                         cargo = { allFeatures = true },
-    --                         checkOnSave = {
-    --                             command = "cargo clippy",
-    --                             extraArgs = { "--no-deps" },
-    --                         },
-    --                     },
-    --                 },
-    --             },
-    --         },
-    --         setup = {
-    --             rust_analyzer = function(_, opts)
-    --                 local codelldb_path, liblldb_path = get_codelldb()
-    --                 local lsp_utils = require "plugins.lsp.utils"
-    --                 lsp_utils.on_attach(function(client, buffer)
-    --                     -- stylua: ignore
-    --                     if client.name == "rust_analyzer" then
-    --                         vim.keymap.set("n", "<leader>cR", "<cmd>RustRunnables<cr>",
-    --                             { buffer = buffer, desc = "Runnables" })
-    --                         vim.keymap.set("n", "<leader>cl", function() vim.lsp.codelens.run() end,
-    --                             { buffer = buffer, desc = "Code Lens" })
-    --                     end
-    --                 end)
-    --
-    --                 require("rust-tools").setup {
-    --                     tools = {
-    --                         hover_actions = { border = "solid" },
-    --                         on_initialized = function()
-    --                             vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" },
-    --                                 {
-    --                                     pattern = { "*.rs" },
-    --                                     callback = function()
-    --                                         vim.lsp.codelens.refresh()
-    --                                     end,
-    --                                 })
-    --                         end,
-    --                     },
-    --                     server = opts,
-    --                     dap = {
-    --                         adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
-    --                     },
-    --                 }
-    --                 return true
-    --             end,
-    --         },
-    --     },
-    -- }
 }
