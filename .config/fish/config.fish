@@ -19,7 +19,7 @@ if status is-interactive
     alias rm='rmtrash'
     alias rmdir='rmdirtrash'
     alias ls='exa --time-style=long-iso --group-directories-first --icons --no-permissions --git --no-user -l'
-    export EDITOR="~/.local/bin/lvim"
+    export EDITOR="nvim"
     export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
     # set prompt to starship
     starship init fish | source

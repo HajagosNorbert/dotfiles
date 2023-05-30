@@ -3,31 +3,7 @@ return {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
         lazy = true,
-        -- config = function()
-        --     -- This is where you modify the settings for lsp-zero
-        --     -- Note: autocompletion settings will not take effect
-        --
-        --     require('lsp-zero.settings').preset({
-        --         float_border = 'rounded',
-        --         call_servers = 'local',
-        --         configure_diagnostics = true,
-        --         setup_servers_on_start = true,
-        --         set_lsp_keymaps = {
-        --             preserve_mappings = false,
-        --             omit = {},
-        --         },
-        --         manage_nvim_cmp = {
-        --             set_sources = 'recommended',
-        --             set_basic_mappings = true,
-        --             set_extra_mappings = false,
-        --             use_luasnip = true,
-        --             set_format = true,
-        --             documentation_window = true,
-        --         },
-        --     })
-        -- end
     },
-
     -- Autocompletion
     {
         'hrsh7th/nvim-cmp',
@@ -41,7 +17,6 @@ return {
             local cmp = require('cmp')
             local cmp_action = require('lsp-zero.cmp').action()
             cmp.setup({
-                -- TODO: ezeket be kell álllítani, vagy működnek nélküle is?
                 mapping = {
                     ['<C-Space>'] = cmp.mapping.complete(),
                     ['<C-f>'] = cmp_action.luasnip_jump_forward(),
@@ -54,6 +29,7 @@ return {
         "windwp/nvim-autopairs",
         dependencies = 'hrsh7th/nvim-cmp',
         config = function()
+            require("nvim-autopairs").setup();
             local cmp_autopairs = require("nvim-autopairs.completion.cmp")
             require("cmp").event:on('confirm_done', cmp_autopairs.on_confirm_done())
         end
