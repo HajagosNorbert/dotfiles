@@ -7,12 +7,11 @@ if status is-interactive
     
     set ZELLIJ_AUTO_ATTACH true
     if not set -q ZELLIJ
-        if test "$ZELLIJ_AUTO_ATTACH" = "true"
-            zellij attach -c
-        else
+        if test -z $(zellij ls)
             zellij
         end
     end
+
     # aliases
 
     alias v='nvim'

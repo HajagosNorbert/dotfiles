@@ -2,18 +2,15 @@ from libqtile import layout
 from libqtile.config import Match
 
 layouts = [
-    layout.MonadTall(margin=0, border_focus='#5294e2',
+    layout.MonadTall(margin=0,
+                     border_focus='#5294e2',
+                     single_border_width=0
                      #border_normal='#2c5380'
                      ),
-    #layout.Columns(border_focus_stack='#d75f5f'),
     layout.Max(),
+    layout.Bsp(), # seems good, can resize
     # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    # layout.MonadTall(),
     # layout.MonadWide(),
-    # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),
     # layout.VerticalTile(),
