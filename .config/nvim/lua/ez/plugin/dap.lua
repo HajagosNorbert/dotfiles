@@ -47,7 +47,6 @@ local M = {
 
         dap.adapters.coreclr = {
             type = 'executable',
-            -- command = '/usr/local/bin/netcoredbg/netcoredbg',
             command = 'netcoredbg',
             args = { '--interpreter=vscode', '--engineLogging=/home/ez/.local/state/nvim/netcoredbg.log' }
         }
@@ -59,7 +58,7 @@ local M = {
                 name = "launch - netcoredbg",
                 request = "launch",
                 program = function()
-                    if vim.fn.confirm('Should I recompile first?', '&yes\n&no', 2) == 1 then
+                    if vim.fn.confirm('Should I recompile first?', '&yes\n&No', 2) == 1 then
                         vim.g.dotnet_build_project()
                     end
                     return vim.g.dotnet_get_dll_path()

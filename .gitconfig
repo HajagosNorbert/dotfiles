@@ -7,6 +7,7 @@
 [user]
 	name = HajagosNorbert
 	email = hajagosnorbi@gmail.com
+	signingkey = 807F4444870DB673
 [difftool]
 	prompt = true
 [diff]
@@ -17,3 +18,5 @@
 	defaultBranch = main
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
+[commit]
+	gpgsign = true

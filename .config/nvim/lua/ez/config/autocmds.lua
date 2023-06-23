@@ -15,3 +15,8 @@ vim.api.nvim_create_autocmd("QuitPre", {
     end
   end
 })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = { "*.roc" },
+  command = "set syntax=elm",
+})

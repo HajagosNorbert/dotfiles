@@ -29,4 +29,7 @@ fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/opt/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.dotnet/tools
+fish_add_path $HOME/.nix-profile/bin
+
+direnv hook fish | source
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"

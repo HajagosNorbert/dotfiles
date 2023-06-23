@@ -1,3 +1,21 @@
+local M = {}
+
+M.toggle_quick_fix_list = function()
+  local qf_exists = false
+  for _, win in pairs(vim.fn.getwininfo()) do
+    if win["quickfix"] == 1 then
+      qf_exists = true
+    end
+  end
+  if qf_exists == true then
+    vim.cmd "cclose"
+    return
+  end
+  if not vim.tbl_isempty(vim.fn.getqflist()) then
+    vim.cmd "copen"
+  end
+end
+
 vim.g.mapleader = " "
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -16,13 +34,12 @@ vim.keymap.set("n", "Q", "<nop>")
 -- Got to get something like this configured inside of zellij and not via vim
 --vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<C-q>", M.toggle_quick_fix_list)
+
+
+vim.keymap.set("n", "<leader>j", "<cmd>lnext<CR>zz")
+vim.keymap.set("n", "<leader>k", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
-vim.keymap.set("n", "<leader>Nc", "<cmd>e ~/.config/nvim/lua/ez/packer.lua<CR>");
-
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")

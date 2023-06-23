@@ -62,18 +62,18 @@ def get_custom_bar():
                        fontsize = 28,
                        foreground='#2f343f'
                        ),    
-                widget.Clock(format=' %Y-%m-%d %a %H:%M',
+                widget.Clock(format=' %Y.%m.%d %a %H:%M',
                              background="#2f343f",
-                             foreground='#9bd689'),
-                                                widget.TextBox(                                                
-                                                
+                             foreground='#9bd689',
+                             fontsize=16),
+                widget.TextBox(                                                
                        text = '',
                        padding = 0,
                        fontsize = 28,
                        foreground='#2f343f',
                        ),   
                 widget.TextBox(
-                    text='',
+                    text=' ',
                     mouse_callbacks= {
                         'Button1':
                         lambda: qtile.cmd_spawn(os.path.expanduser('~/.config/rofi/powermenu.sh'))

@@ -24,24 +24,24 @@ class MyVolume(widget.Volume):
         widget.Volume._configure(self, qtile, bar)
         self.volume = self.get_volume()
         if self.volume <= 0:
-            self.text = ''
+            self.text = f'  {self.volume}%'
         elif self.volume <= 15:
-            self.text = ''
+            self.text = f'  {self.volume}%'
         elif self.volume < 50:
-            self.text = ''
+            self.text = f'  {self.volume}%'
         else:
-            self.text = ''
+            self.text = f'  {self.volume}%'
         # drawing here crashes Wayland
 
     def _update_drawer(self, wob=False):
         if self.volume <= 0:
-            self.text = ''
+            self.text = f'  {self.volume}%'
         elif self.volume <= 15:
-            self.text = ''
+            self.text = f'  {self.volume}%'
         elif self.volume < 50:
-            self.text = ''
+            self.text = f'  {self.volume}%'
         else:
-            self.text = ''
+            self.text = f'  {self.volume}%'
         self.draw()
 
         if wob:
@@ -49,7 +49,7 @@ class MyVolume(widget.Volume):
                 f.write(str(self.volume) + "\n")
 
 volume = MyVolume(
-    fontsize=18,
+    fontsize=16,
     font='Font Awesome 5 Free',
     foreground=colors[4],
     background='#2f343f',
