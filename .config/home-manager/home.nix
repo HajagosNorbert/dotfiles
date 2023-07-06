@@ -14,11 +14,9 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "23.05"; # Please read the comment before changing.
-  services.lorri.enable = true;
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    pkgs.direnv
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -66,5 +64,8 @@
     # EDITOR = "emacs";
   };
   # Let Home Manager install and manage itself.
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
+  programs.zsh.enable = true;
   programs.home-manager.enable = true;
 }

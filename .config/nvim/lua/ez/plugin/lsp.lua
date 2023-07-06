@@ -46,7 +46,7 @@ return {
             {
                 'williamboman/mason.nvim',
                 opts = {
-                    ensure_installed = {}
+                    ensure_installed = {"prettierd"}
                 },
                 build = function()
                     pcall(vim.cmd, 'MasonUpdate')
@@ -60,7 +60,7 @@ return {
         config = function(_, opts)
             local lsp = require('lsp-zero').preset({})
 
-            lsp.on_attach(function(_, bufnr)
+            lsp.on_attach(function(client, bufnr)
                 lsp.default_keymaps({ buffer = bufnr })
 
                 vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename)

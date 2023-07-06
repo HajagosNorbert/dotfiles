@@ -75,3 +75,4 @@ lfcd () {
         fi
     fi
 }
+eval "$(direnv hook bash)"
