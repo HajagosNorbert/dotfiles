@@ -62,9 +62,10 @@ def get_custom_bar():
                        fontsize = 28,
                        foreground='#2f343f'
                        ),    
-                widget.Clock(format=' %Y.%m.%d %a %H:%M',
+                widget.Clock(format='%Y.%m.%d %a %H:%M',
                              background="#2f343f",
-                             foreground='#9bd689',
+                             foreground='#ffffff',
+                             # foreground='#9bd689',
                              fontsize=16),
                 widget.TextBox(                                                
                        text = '',

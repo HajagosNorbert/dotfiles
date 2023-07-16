@@ -18,7 +18,6 @@ return {
             local cmp_action = require('lsp-zero.cmp').action()
             cmp.setup({
                 mapping = {
-                    ['<C-Space>'] = cmp.mapping.complete(),
                     ['<C-f>'] = cmp_action.luasnip_jump_forward(),
                     ['<C-b>'] = cmp_action.luasnip_jump_backward(),
                 }
