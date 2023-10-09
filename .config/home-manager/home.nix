@@ -63,9 +63,12 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
-  # Let Home Manager install and manage itself.
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
-  programs.zsh.enable = true;
-  programs.home-manager.enable = true;
+  programs = {
+# Let Home Manager install and manage itself.
+    home-manager.enable = true;
+    # direnv = {
+    #   enable = true;
+    #   nix-direnv.enable = true;
+    # };
+  };
 }
