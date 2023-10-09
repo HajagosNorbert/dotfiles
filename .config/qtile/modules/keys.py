@@ -11,10 +11,7 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod],
-        "space",
-        lazy.layout.next(),
-        desc="Move window focus to other window"),
+    Key([mod], 'space', lazy.next_screen(), desc='Next monitor'),
 
     Key([mod], "r", lazy.spawn("rofi -show combi"), desc="spawn rofi"),
 

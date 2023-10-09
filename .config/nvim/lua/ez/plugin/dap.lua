@@ -136,7 +136,7 @@ local M = {
             }
         }
 
-        dapui.setup()
+        dapui.setup(dapui_config)
 
 
         dap.listeners.after.event_initialized["dapui_config"] = function()

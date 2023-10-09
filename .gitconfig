@@ -18,5 +18,7 @@
 	defaultBranch = main
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
-[commit]
-	gpgsign = true
+[mergetool "nvim"]
+	cmd = nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
+[merge]
+	tool = nvimdiff2

@@ -41,5 +41,6 @@ vim.keymap.set("n", "<C-q>", M.toggle_quick_fix_list)
 
 vim.keymap.set("n", "<leader>j", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lprev<CR>zz")
+vim.keymap.set("n", "<leader>n", "<cmd>noh<CR>")
 
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
