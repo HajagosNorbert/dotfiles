@@ -1,0 +1,22 @@
+[font]
+size = 7
+
+[font.bold]
+family = "JetBrainsMonoNerdFont"
+
+[font.bold_italic]
+family = "JetBrainsMonoNerdFont"
+
+[font.italic]
+family = "JetBrainsMonoNerdFont"
+
+[font.normal]
+family = "JetBrainsMonoNerdFont"
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F11"
+mods = "Super"
+
+[window]
+opacity = 0.93

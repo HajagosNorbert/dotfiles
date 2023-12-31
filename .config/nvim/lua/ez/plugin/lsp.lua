@@ -9,7 +9,11 @@ return {
         'hrsh7th/nvim-cmp',
         event = 'InsertEnter',
         dependencies = {
-            { 'L3MON4D3/LuaSnip' },
+            {
+                'L3MON4D3/LuaSnip',
+                version = 'v2.*',
+                build = 'make install_jsregexp'
+            },
         },
         config = function()
             require('lsp-zero.cmp').extend()
@@ -45,7 +49,7 @@ return {
             {
                 'williamboman/mason.nvim',
                 opts = {
-                    ensure_installed = {"prettierd"}
+                    ensure_installed = { "prettierd" }
                 },
                 build = function()
                     pcall(vim.cmd, 'MasonUpdate')
@@ -73,7 +77,6 @@ return {
             require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
             lsp.skip_server_setup(opts.skip_servers_from_autoconf)
             lsp.setup()
-
         end
     },
     {

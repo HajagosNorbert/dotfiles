@@ -27,3 +27,9 @@ vim.opt.smartcase = true
 vim.opt.foldenable = false
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
+vim.filetype.add({
+    extension = {
+        roc = "roc"
+    }
+})

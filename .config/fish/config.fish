@@ -5,13 +5,12 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
     
-    set ZELLIJ_AUTO_ATTACH true
-    if not set -q ZELLIJ
-        if test -z $(zellij ls)
-            zellij
-        end
-    end
-
+    # if not set -q ZELLIJ
+    #     if test -z $(zellij ls)
+    #         zellij
+    #     end
+    # end
+    eval (zellij setup --generate-auto-start fish | string collect)
     # aliases
 
     alias v='nvim'

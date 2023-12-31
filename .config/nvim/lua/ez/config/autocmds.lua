@@ -20,3 +20,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
   pattern = { "*.roc" },
   command = "set syntax=elm",
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "*.roc" },
+  command = "set syntax=elm",
+})

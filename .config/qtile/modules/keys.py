@@ -1,3 +1,4 @@
+# from Qmin import qmin
 from libqtile.lazy import lazy
 from libqtile.config import Key
 import os
@@ -52,10 +53,9 @@ keys = [
 
     Key([mod, "shift"], "f", lazy.window.toggle_floating(), desc='Toggle floating'),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc='Toggle fullscreen'),
-    Key([mod], "m",
-             lazy.layout.maximize(),
-             desc='Toggle window between minimum and maximum sizes'
-             ),
+    # Key([mod, "shift"], "m", qmin(), desc="Qmin unminimizer"),
+    # Key([mod], "m", lazy.window.toggle_minimize(), lazy.group.next_window(), desc="Minimize window"),
+
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed

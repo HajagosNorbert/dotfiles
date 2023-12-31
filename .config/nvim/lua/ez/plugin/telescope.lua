@@ -1,6 +1,6 @@
 return {
     'nvim-telescope/telescope.nvim',
-    version = '0.1.1',
+    version = '0.1.4',
     -- or                            , branch = '0.1.x',
     dependencies = { { 'nvim-lua/plenary.nvim' } },
     init = function()
