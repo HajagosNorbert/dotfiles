@@ -17,9 +17,14 @@ M.toggle_quick_fix_list = function()
 end
 
 vim.g.mapleader = " "
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- move accross word wrap like they were files
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 vim.keymap.set("n", "<C-d>", "<C-d>")
 vim.keymap.set("n", "<C-u>", "<C-u>")

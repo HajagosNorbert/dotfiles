@@ -212,7 +212,8 @@ keybinds {
         bind "Alt m" { SwitchToMode "Move"; }
     }
     shared_except "tmux" "locked" {
-        bind "Ctrl b" { SwitchToMode "Tmux"; }
+        unbind "Ctrl b"
+        // bind "Ctrl b" { SwitchToMode "Tmux"; }
     }
 }
 

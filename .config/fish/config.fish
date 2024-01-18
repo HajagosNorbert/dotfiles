@@ -14,6 +14,8 @@ if status is-interactive
     # aliases
 
     alias v='nvim'
+    alias kick='NVIM_APPNAME="kickvim" nvim'
+    alias newim='NVIM_APPNAME="newim" nvim'
     alias rm='rmtrash'
     alias rmdir='rmdirtrash'
     alias ls='exa --time-style=long-iso --group-directories-first --icons --no-permissions --git --no-user -l'

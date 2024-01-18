@@ -21,6 +21,18 @@ vim.api.nvim_create_autocmd("BufEnter", {
   command = "set syntax=elm",
 })
 
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = 'IncSearch',
+      timeout = 40
+    })
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "*.roc" },
   command = "set syntax=elm",
