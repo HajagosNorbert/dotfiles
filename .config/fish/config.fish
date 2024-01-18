@@ -1,7 +1,3 @@
-# The following snippet is meant to be used like this in your fish config:
-#
-#     eval (zellij setup --generate-auto-start fish | string collect)
-
 if status is-interactive
     # Commands to run in interactive sessions can go here
     
@@ -14,8 +10,6 @@ if status is-interactive
     # aliases
 
     alias v='nvim'
-    alias kick='NVIM_APPNAME="kickvim" nvim'
-    alias newim='NVIM_APPNAME="newim" nvim'
     alias rm='rmtrash'
     alias rmdir='rmdirtrash'
     alias ls='exa --time-style=long-iso --group-directories-first --icons --no-permissions --git --no-user -l'

@@ -26,6 +26,7 @@ return {
 		-- Adds git related signs to the gutter, as well as utilities for managing changes
 		-- TODO: more config here
 		"lewis6991/gitsigns.nvim",
+		opts = {},
 	},
 	{
 		-- Set lualine as statusline
@@ -40,6 +41,7 @@ return {
 			},
 		},
 	},
+
 	{
 		-- Add indentation guide lines even on blank lines
 		-- Great for non {} based languages like python or Roc
