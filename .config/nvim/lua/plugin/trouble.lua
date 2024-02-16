@@ -21,7 +21,7 @@ return {
 			{ desc = "Trouble: toggle [D]ocument diagnostics" },
 		},
 		{
-			"é",
+			"á",
 			function()
 				require("trouble").open()
 				require("trouble").previous({ skip_groups = true })
@@ -29,7 +29,7 @@ return {
 			{ desc = "Trouble: previous diagnostics element" },
 		},
 		{
-			"á",
+			"é",
 			function()
 				require("trouble").open()
 				require("trouble").next({ skip_groups = true })

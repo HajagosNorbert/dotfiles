@@ -1,38 +1,70 @@
--- return {
---     "ThePrimeagen/harpoon",
---     branch = "harpoon2",
---     dependencies = { "nvim-lua/plenary.nvim" },
---     init = function ()
---         local harpoon = require("harpoon")
---         harpoon:setup()
---
---         vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end)
---         vim.keymap.set("n", "<leader>h", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
---
---         vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
---         vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
---         vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
---         vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
---         vim.keymap.set("n", "<leader>5", function() harpoon:list():select(5) end)
---
---         -- Toggle previous & next buffers stored within Harpoon list
---         vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
---         vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
---     end
--- }
+local function nav_to_file(index)
+	return function()
+		require("harpoon"):list():select(index)
+	end
+end
 return {
-  'ThePrimeagen/harpoon',
-  dependencies = { { 'nvim-lua/plenary.nvim' } },
-  keys = {
-    { "<leader>a", function() require("harpoon.mark").add_file() end,       desc = "Add file" },
-    { "<leader>h", function() require("harpoon.ui").toggle_quick_menu() end },
-    { "<leader>1", function() require("harpoon.ui").nav_file(1) end },
-    { "<leader>2", function() require("harpoon.ui").nav_file(2) end },
-    { "<leader>3", function() require("harpoon.ui").nav_file(3) end },
-    { "<leader>4", function() require("harpoon.ui").nav_file(4) end },
-    { "<leader>5", function() require("harpoon.ui").nav_file(5) end },
-    { "<leader>6", function() require("harpoon.ui").nav_file(6) end },
-  },
-  opts = {},
+	"ThePrimeagen/harpoon",
+	branch = "harpoon2",
+	keys = {
+		{
+			"<leader>a",
+			function()
+				require("harpoon"):list():append()
+			end,
+			desc = "Harpoon: [a]ppend file",
+		},
+		{
+			"<leader>m",
+			function()
+				require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
+			end,
+			desc = "Harpoon: toggle [m]enu",
+		},
+		{ "<leader>1", nav_to_file(1), desc = "Harpoon: navigate to file 1" },
+		{ "<leader>2", nav_to_file(2), desc = "Harpoon: navigate to file 2" },
+		{ "<leader>3", nav_to_file(3), desc = "Harpoon: navigate to file 3" },
+		{ "<leader>4", nav_to_file(4), desc = "Harpoon: navigate to file 4" },
+		{ "<leader>5", nav_to_file(5), desc = "Harpoon: navigate to file 5" },
+	},
+	opts = {
+		settings = {
+			sync_on_ui_close = true,
+			save_on_toggle = true,
+		},
+	},
+	dependencies = { "nvim-lua/plenary.nvim" },
 }
 
+-- local function nav_to_file(num)
+-- 	return function()
+-- 		require("harpoon.ui").nav_file(num)
+-- 	end
+-- end
+-- return {
+-- 	"ThePrimeagen/harpoon",
+-- 	dependencies = { { "nvim-lua/plenary.nvim" } },
+-- 	keys = {
+-- 		{
+-- 			"<leader>a",
+-- 			function()
+-- 				require("harpoon.mark").add_file()
+-- 			end,
+-- 			desc = "Harpoon: [a]dd file",
+-- 		},
+-- 		{
+-- 			"<leader>m",
+-- 			function()
+-- 				require("harpoon.ui").toggle_quick_menu()
+-- 			end,
+-- 			desc = "Harpoon: toggle [m]enu",
+-- 		},
+-- 		{ "<leader>1", nav_to_file(1), desc="Harpoon: navigate to file 1" },
+-- 		{ "<leader>2", nav_to_file(2), desc="Harpoon: navigate to file 2" },
+-- 		{ "<leader>3", nav_to_file(3), desc="Harpoon: navigate to file 3" },
+-- 		{ "<leader>4", nav_to_file(4), desc="Harpoon: navigate to file 4" },
+-- 		{ "<leader>5", nav_to_file(5), desc="Harpoon: navigate to file 5" },
+-- 		{ "<leader>6", nav_to_file(6), desc="Harpoon: navigate to file 6" },
+-- 	},
+-- 	opts = {},
+-- }

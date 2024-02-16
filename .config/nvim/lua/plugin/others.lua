@@ -22,22 +22,13 @@ return {
 		"numToStr/Comment.nvim",
 		opts = {},
 	},
-	{
-		-- Adds git related signs to the gutter, as well as utilities for managing changes
-		-- TODO: more config here
-		"lewis6991/gitsigns.nvim",
-		opts = {},
-	},
+	
 	{
 		-- Set lualine as statusline
 		"nvim-lualine/lualine.nvim",
-		-- See `:help lualine.txt`
-		-- TODO: more conf
 		opts = {
 			options = {
-				theme = "onedark",
-				component_separators = "|",
-				section_separators = "",
+				theme = "tokyonight",
 			},
 		},
 	},
@@ -45,13 +36,8 @@ return {
 	{
 		-- Add indentation guide lines even on blank lines
 		-- Great for non {} based languages like python or Roc
-		-- TODO: highlight where I am
 		"lukas-reineke/indent-blankline.nvim",
-		-- Enable `lukas-reineke/indent-blankline.nvim`
-		-- See `:help ibl`
 		main = "ibl",
 		opts = {},
 	},
-	"tpope/vim-fugitive",
-	"tpope/vim-rhubarb",
 }
