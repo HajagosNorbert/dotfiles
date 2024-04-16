@@ -1,9 +1,8 @@
 local servers = {
-	-- clangd = {},
 	gopls = {},
-	-- pyright = {},
 	rust_analyzer = {},
 	tsserver = {},
+	nil_ls = {},
 	-- html = { filetypes = { 'html', 'twig', 'hbs'} },
 	lua_ls = {
 		Lua = {
@@ -15,6 +14,13 @@ local servers = {
 	},
 }
 
+local diagnostic_prev = function ()
+	vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})
+end
+
+local diagnostic_next = function ()
+	vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})
+end
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
 	local nmap = function(keys, func, desc)
@@ -24,9 +30,10 @@ local on_attach = function(_, bufnr)
 
 		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 	end
+	nmap("K", vim.lsp.buf.hover, "Hover Documentation")
+	nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-
 	nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
@@ -34,9 +41,8 @@ local on_attach = function(_, bufnr)
 	nmap("gt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype definition")
 	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
-
-	nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-	nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+	nmap("á", diagnostic_prev, "Goto previous diagnostic")
+	nmap("é", diagnostic_next, "Goto next diagnostic")
 end
 
 return {

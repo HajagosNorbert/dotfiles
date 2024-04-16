@@ -1,9 +1,5 @@
-[credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+[credential]
+	helper = git-credential-libsecret
 [user]
 	name = HajagosNorbert
 	email = hajagosnorbi@gmail.com
@@ -16,8 +12,6 @@
 	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [init]
 	defaultBranch = main
-[credential]
-	helper = /usr/lib/git-core/git-credential-libsecret
 [mergetool "nvim"]
 	cmd = nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
 [merge]

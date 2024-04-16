@@ -22,7 +22,11 @@ return {
 		"numToStr/Comment.nvim",
 		opts = {},
 	},
-	
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+	},
 	{
 		-- Set lualine as statusline
 		"nvim-lualine/lualine.nvim",
@@ -32,7 +36,6 @@ return {
 			},
 		},
 	},
-
 	{
 		-- Add indentation guide lines even on blank lines
 		-- Great for non {} based languages like python or Roc

@@ -34,6 +34,7 @@ return {
 			["markdown.mdx"] = { { formatters.prettierd, formatters.prettier } },
 			["graphql"] = { { formatters.prettierd, formatters.prettier } },
 			["handlebars"] = { { formatters.prettierd, formatters.prettier } },
+			["nix"] = { formatters["nixpkgs-fmt"] },
 		},
 	},
 	init = function()

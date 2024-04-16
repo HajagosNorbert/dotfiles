@@ -20,22 +20,22 @@ return {
 			end,
 			{ desc = "Trouble: toggle [D]ocument diagnostics" },
 		},
-		{
-			"á",
-			function()
-				require("trouble").open()
-				require("trouble").previous({ skip_groups = true })
-			end,
-			{ desc = "Trouble: previous diagnostics element" },
-		},
-		{
-			"é",
-			function()
-				require("trouble").open()
-				require("trouble").next({ skip_groups = true })
-			end,
-			{ desc = "Trouble: next diagnostics element" },
-		},
+		-- {
+		-- 	"á",
+		-- 	function()
+		-- 		require("trouble").open()
+		-- 		require("trouble").previous({ skip_groups = true })
+		-- 	end,
+		-- 	{ desc = "Trouble: previous diagnostics element" },
+		-- },
+		-- {
+		-- 	"é",
+		-- 	function()
+		-- 		require("trouble").open()
+		-- 		require("trouble").next({ skip_groups = true })
+		-- 	end,
+		-- 	{ desc = "Trouble: next diagnostics element" },
+		-- },
 	},
 	config = function(_, opts)
 		require("trouble").setup(opts)

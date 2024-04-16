@@ -12,11 +12,11 @@ if status is-interactive
     alias v='nvim'
     alias rm='rmtrash'
     alias rmdir='rmdirtrash'
-    alias ls='exa --time-style=long-iso --group-directories-first --icons --no-permissions --git --no-user -l'
+    alias ls='eza --time-style=long-iso --group-directories-first --icons --git -l'
     export EDITOR="nvim"
-    export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+    # export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
     # set prompt to starship
-    starship init fish | source
+    # starship init fish | source
     # load_nvm > /dev/stderr
 end
 
@@ -26,5 +26,4 @@ fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.dotnet/tools
 fish_add_path $HOME/.nix-profile/bin
 
-direnv hook fish | source
-alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias config="/usr/bin/env git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"

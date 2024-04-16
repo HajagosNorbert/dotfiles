@@ -1,5 +1,5 @@
 local M = {
-    formatters = { stylua = "stylua", prettierd = "prettierd", prettier = "prettier" },
+    formatters = { stylua = "stylua", prettierd = "prettierd", prettier = "prettier", ["nixpkgs-fmt"] = "nixpkgs-fmt"  },
 }
 
 return M

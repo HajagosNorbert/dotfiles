@@ -1,3 +1,6 @@
+[shell]
+program = "/nix/store/8x24n8synkrl0jb5nsrh01fhzqwk1npa-fish-3.7.0/bin/fish" 
+
 [font]
 size = 7
 
