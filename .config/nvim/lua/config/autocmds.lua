@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd("QuitPre", {
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   pattern = { "*.roc" },
-  command = "set filetype=elm",
+  command = "set filetype=roc",
 })
 
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })

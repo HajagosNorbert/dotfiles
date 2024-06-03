@@ -132,6 +132,8 @@
       man-pages
       htop
       vscode.fhs
+      gimp
+      dotnet-sdk_8
       #nvim
       xclip
       ripgrep

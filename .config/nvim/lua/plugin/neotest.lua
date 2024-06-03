@@ -57,6 +57,8 @@ return {
 		-- They recommend it, but the fixcursor repo owner stated that it is no longer needed
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
+		"nvim-neotest/nvim-nio",
+		"antoinemadec/FixCursorHold.nvim",
 		"thenbe/neotest-playwright",
 		-- only for the util function
 		"neovim/nvim-lspconfig",

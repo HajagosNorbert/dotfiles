@@ -14,12 +14,12 @@ local servers = {
 	},
 }
 
-local diagnostic_prev = function ()
-	vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})
+local diagnostic_prev = function()
+	vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
 end
 
-local diagnostic_next = function ()
-	vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})
+local diagnostic_next = function()
+	vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
 end
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
@@ -105,10 +105,17 @@ return {
 					require("lspconfig")[server_name].setup({
 						capabilities = capabilities,
 						on_attach = on_attach,
-						settings = servers[server_name],
+						settings = (servers[server_name] or {}),
 						filetypes = (servers[server_name] or {}).filetypes,
 					})
 				end,
+			})
+
+			-- lspconfig for servers outside mason
+			require("lspconfig").roc_ls.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+				filetypes = { "roc" },
 			})
 		end,
 	},
