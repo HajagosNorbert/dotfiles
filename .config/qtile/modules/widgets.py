@@ -22,35 +22,26 @@ extension_defaults = widget_defaults.copy()
 class MyVolume(widget.Volume):
     def _configure(self, qtile, bar):
         widget.Volume._configure(self, qtile, bar)
-        self.volume = self.get_volume()
-        if self.volume <= 0:
-            self.text = f'  {self.volume}%'
-        elif self.volume <= 15:
-            self.text = f'  {self.volume}%'
-        elif self.volume < 50:
-            self.text = f'  {self.volume}%'
-        else:
-            self.text = f'  {self.volume}%'
-        # drawing here crashes Wayland
 
     def _update_drawer(self, wob=False):
-        if self.volume <= 0:
-            self.text = f'  {self.volume}%'
-        elif self.volume <= 15:
-            self.text = f'  {self.volume}%'
-        elif self.volume < 50:
-            self.text = f'  {self.volume}%'
+        vol, muted = self.get_volume()
+        if muted:
+            self.text = f'\U0001f507 ' 
+        elif vol <= 15:
+            self.text = f'   {vol}%'
+        elif vol < 50:
+            self.text = f'   {vol}%'
         else:
-            self.text = f'  {self.volume}%'
+            self.text = f'   {vol}%'
         self.draw()
 
         if wob:
             with open(self.wob, 'a') as f:
-                f.write(str(self.volume) + "\n")
+                f.write(str(vol) + "\n")
 
 volume = MyVolume(
+# volume = widget.Volume(
     fontsize=16,
-    font='Font Awesome 5 Free',
     foreground='#dddddd',
     background='#2f343f',
     mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("pavucontrol")}

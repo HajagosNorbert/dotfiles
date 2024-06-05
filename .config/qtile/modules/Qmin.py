@@ -1,5 +1,5 @@
 import Qminconfig
-from libqtile.command import lazy
+from libqtile.lazy import lazy
 from libqtile import hook
 from fuzzywuzzy import fuzz, process
 import configparser
