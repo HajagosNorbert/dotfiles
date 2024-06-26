@@ -134,6 +134,8 @@
       vscode.fhs
       gimp
       dotnet-sdk_8
+      vlc
+      gthumb
       #nvim
       xclip
       ripgrep
