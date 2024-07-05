@@ -140,6 +140,7 @@
       xclip
       ripgrep
       fd
+      arandr
       rustc
       cargo
       # for qtile

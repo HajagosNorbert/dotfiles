@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # hdmi monitor is left to the laptops display
-xrandr --output HDMI2 --left-of eDP1
+xrandr --output HDMI-2 --left-of eDP-1
 
 # when restarting qtile this will not run. So after plugging in a new monitor, this is not enaugh
 #autorandr --change
