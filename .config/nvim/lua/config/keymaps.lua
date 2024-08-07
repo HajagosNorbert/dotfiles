@@ -39,13 +39,18 @@ vim.keymap.set("n", "Q", "<nop>")
 -- Got to get something like this configured inside of zellij and not via vim
 --vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
-vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")
+-- vim.keymap.set("n", "<C-q>j", "<cmd>cnext<CR>zz")
+-- vim.keymap.set("n", "<C-q>k", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<D-j>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<D-n>", function ()print("hi") end)
+vim.keymap.set("n", "<D-t>", function ()print("hi") end)
+vim.keymap.set("n", "<C-z>", function ()print("hi") end)
+vim.keymap.set("n", "<D-k>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<C-q>", M.toggle_quick_fix_list)
 
 
-vim.keymap.set("n", "<leader>j", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lprev<CR>zz")
+-- vim.keymap.set("n", "<leader>j", "<cmd>lnext<CR>zz")
+-- vim.keymap.set("n", "<leader>k", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>n", "<cmd>noh<CR>")
 
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

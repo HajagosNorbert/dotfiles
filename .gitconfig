@@ -1,7 +1,7 @@
 [credential]
 	helper = git-credential-libsecret
 [user]
-	name = HajagosNorbert
+	name = Norbert Hajagos
 	email = hajagosnorbi@gmail.com
 	signingkey = 807F4444870DB673
 [difftool]
@@ -16,3 +16,5 @@
 	cmd = nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
 [merge]
 	tool = nvimdiff2
+[rerere]
+	enabled = true

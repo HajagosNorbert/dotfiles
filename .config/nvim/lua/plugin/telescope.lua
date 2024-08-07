@@ -7,6 +7,7 @@ return {
         local builtin = require('telescope.builtin')
 
         vim.keymap.set('n', '<leader>s', builtin.find_files, {})
+        vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {})
         vim.keymap.set('n', '<leader>ff', "<cmd>lua require'telescope.builtin'.find_files({ no_ignore = true, no_ignore_parent = true })<cr>", {desc="find files disregaring .gitignore"})
         vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
         vim.keymap.set('n', '<leader>fw', function()

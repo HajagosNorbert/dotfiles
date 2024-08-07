@@ -76,7 +76,6 @@
   services.blueman.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   hardware.pulseaudio.support32Bit = true;
   hardware.enableAllFirmware = true;
@@ -115,13 +114,14 @@
       libsForQt5.kolourpaint
       wget
       unzip
-      nodejs_18
+      nodejs_20
       gcc
       firefox
       tldr
       rmtrash
       zellij
       alacritty
+      kitty
       go
       telegram-desktop
       zulip
@@ -136,11 +136,12 @@
       dotnet-sdk_8
       vlc
       gthumb
-      #nvim
+      arandr
+      ungoogled-chromium
+      # for nvim
       xclip
       ripgrep
       fd
-      arandr
       rustc
       cargo
       # for qtile
