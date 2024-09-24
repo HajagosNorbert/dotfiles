@@ -14,14 +14,13 @@
       nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs;};
           modules = [ 
-            # ./hosts/laptop/configuration.nix
-            ./configuration.nix
-          ];
+            ./hosts/laptop/configuration.nix
+            ];
         };
       nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs;};
           modules = [ 
-            ./hosts/laptop/configuration.nix
+            ./hosts/desktop/configuration.nix
           ];
         };
 
