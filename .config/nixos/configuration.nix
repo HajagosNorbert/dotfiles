@@ -198,9 +198,6 @@
 
   programs.nm-applet.enable = true;
 
-  # Cuz I need to restart my phone sometimes with a broken Power Button
-  programs.adb.enable = true;
-
   # Non Qtile
   programs.neovim = {
     enable = true;
