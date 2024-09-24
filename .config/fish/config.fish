@@ -24,8 +24,10 @@ end
 
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/opt/bin
-fish_add_path $HOME/code/roc/result/bin
+fish_add_path $HOME/code/roc-things/roc/result/bin
+fish_add_path $HOME/go/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.dotnet/tools
 fish_add_path $HOME/.nix-profile/bin
+fish_add_path $HOME/.npm/bin
 

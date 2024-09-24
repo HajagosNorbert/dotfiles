@@ -16,6 +16,12 @@ vim.api.nvim_create_autocmd("QuitPre", {
   end
 })
 
+-- suggested BufRead,BufNewFile in the docs
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.xmlui" },
+  command = "set filetype=xml",
+})
+
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   pattern = { "*.roc" },
   command = "set filetype=roc",

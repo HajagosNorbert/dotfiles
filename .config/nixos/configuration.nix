@@ -15,6 +15,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.initrd.systemd.enable = true;
 
   boot.supportedFilesystems = [ "ntfs" ];
 
@@ -27,6 +28,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.backend = "iwd";
 
   # Set your time zone.
   time.timeZone = "Europe/Budapest";
@@ -46,6 +48,9 @@
     LC_TIME = "hu_HU.UTF-8";
   };
 
+  services.dbus.implementation = "broker";
+  # trim the hard drive
+  services.fstrim.enable = true;
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   # Enable the GNOME Desktop Environment.
@@ -108,8 +113,9 @@
   users.users.ez = {
     isNormalUser = true;
     description = "Norbert";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "adbusers"];
     packages = with pkgs; [
+      ventoy-full
       transmission_4-gtk
       libsForQt5.kolourpaint
       wget
@@ -191,6 +197,9 @@
   services.udisks2.enable = true;
 
   programs.nm-applet.enable = true;
+
+  # Cuz I need to restart my phone sometimes with a broken Power Button
+  programs.adb.enable = true;
 
   # Non Qtile
   programs.neovim = {

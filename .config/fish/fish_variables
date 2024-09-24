@@ -41,4 +41,4 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dE6B450
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/home/ez/code/roc/result/bin\x1e/home/ez/\x2ecargo/bin\x1e/home/ez/\x2enix\x2dprofile/bin\x1e/home/ez/opt/bin\x1e/home/ez/\x2elocal/bin\x1e/home/ezredes02/\x2elocal/bin\x1e/home/ezredes02/\x2ecargo/bin
+SETUVAR fish_user_paths:/home/ez/code/roc\x2dthings/roc/result/bin\x1e/home/ez/go/bin\x1e/home/ez/\x2enpm/bin\x1e/home/ez/code/roc/result/bin\x1e/home/ez/\x2ecargo/bin\x1e/home/ez/\x2enix\x2dprofile/bin\x1e/home/ez/opt/bin\x1e/home/ez/\x2elocal/bin\x1e/home/ezredes02/\x2elocal/bin\x1e/home/ezredes02/\x2ecargo/bin
