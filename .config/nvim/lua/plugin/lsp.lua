@@ -1,8 +1,6 @@
 local servers = {
 	gopls = {},
 	rust_analyzer = {},
-	tsserver = {},
-	nil_ls = {},
 	-- html = { filetypes = { 'html', 'twig', 'hbs'} },
 	lua_ls = {
 		Lua = {

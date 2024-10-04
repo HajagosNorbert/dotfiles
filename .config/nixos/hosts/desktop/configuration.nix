@@ -11,6 +11,56 @@
     ];
 
 
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    kdePackages.kate
+    kdePackages.kolourpaint
+    gparted
+    brave
+    vlc
+    ungoogled-chromium
+    telegram-desktop
+    zulip
+    obsidian
+    vscode.fhs
+    libimobiledevice
+    kitty
+    wget
+    gcc
+    ripgrep
+    nodejs_20
+    unzip
+    man-pages
+    htop
+    git
+    vim
+    unzip
+    rmtrash
+    go
+    eza
+  ];
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
+  programs.direnv.enable = true;
+  programs.fish.enable = true;
+  programs.gnupg.agent = {
+     enable = true;
+     enableSSHSupport = true;
+     settings = {
+       default-cache-ttl = 28800;
+       max-cache-ttl = 28800;
+     };
+  };
+
+  # Needed for many programs even on waylan for som reason
+  services.xserver.enable = true;
+  # Enable the KDE Plasma Desktop Environment.
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -23,21 +73,44 @@
       options = [ "rw" "uid=1000"];
     };
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  networking.hostName = "desktop-nixos"; # Define your hostname.
 
   # Enable networking
   networking.networkmanager.enable = true;
-  #networking.networkmanager.wifi.backend = "iwd";
 
-  # Set your time zone.
+  # should be bettern, but still buggy
+  # networking.networkmanager.wifi.backend = "iwd";
+
+  services.dbus.implementation = "broker";
+  services.fstrim.enable = true;
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+  hardware.bluetooth.enable = true;
+  hardware.enableAllFirmware = true;
+
+  # https://nixos.wiki/wiki/IOS
+  services.usbmuxd.enable = true;
+
+  # Enable sound with pipewire.
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.ez = {
+    isNormalUser = true;
+    description = "ez";
+    extraGroups = [ "networkmanager" "wheel" "audio"];
+    packages = with pkgs; [
+    ];
+  };
   time.timeZone = "Europe/Belgrade";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -51,17 +124,6 @@
     LC_TELEPHONE = "hu_HU.UTF-8";
     LC_TIME = "hu_HU.UTF-8";
   };
-
-  services.dbus.implementation = "broker";
-  services.fstrim.enable = true;
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "hu";
@@ -71,95 +133,7 @@
   # Configure console keymap
   console.keyMap = "hu";
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-  hardware.bluetooth.enable = true;
-  hardware.enableAllFirmware = true;
-
-
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ez = {
-    isNormalUser = true;
-    description = "ez";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
-    packages = with pkgs; [
-
-    #  thunderbird
-    ];
-  };
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
-  programs.direnv.enable = true;
-  # Install firefox.
-  programs.firefox.enable = true;
-  programs.fish.enable = true;
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    kdePackages.kate
-    kdePackages.kolourpaint
-    vlc
-    ungoogled-chromium
-    telegram-desktop
-    zulip
-    teams-for-linux
-    obsidian
-    vscode.fhs
-    kitty
-    wget
-    unzip
-    man-pages
-    htop
-    git
-    vim
-    unzip
-    rmtrash
-    go
-    eza
-  ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-   programs.gnupg.agent = {
-     enable = true;
-     enableSSHSupport = true;
-   };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
