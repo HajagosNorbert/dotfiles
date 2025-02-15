@@ -1,6 +1,5 @@
 local servers = {
 	gopls = {},
-	rust_analyzer = {},
 	-- html = { filetypes = { 'html', 'twig', 'hbs'} },
 	lua_ls = {
 		Lua = {
@@ -123,6 +122,11 @@ return {
 				capabilities = capabilities,
 				on_attach = on_attach,
 				filetypes = { "roc" },
+			})
+
+			require("lspconfig").rust_analyzer.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 		end,
 	},

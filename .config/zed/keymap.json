@@ -1,0 +1,40 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      // Put key bindings here if you want them to work in normal & visual mode.
+      "space s": "file_finder::Toggle",
+      "space l f": "editor::Format",
+      "á": "editor::GoToPrevDiagnostic",
+      "é": "editor::GoToDiagnostic"
+    }
+  },
+  {
+    "context": "VimControl",
+    "bindings": {
+      "space d s": "project_symbols::Toggle",
+      "space e": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "space e": "workspace::ToggleLeftDock",
+      "alt-p": "terminal_panel::ToggleFocus"
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      // "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  }
+]

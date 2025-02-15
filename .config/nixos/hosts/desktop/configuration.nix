@@ -19,26 +19,30 @@
     gparted
     brave
     vlc
+    qbittorrent
     ungoogled-chromium
-    telegram-desktop
-    zulip
     obsidian
     vscode.fhs
+    zed-editor
     libimobiledevice
     kitty
+    ghostty
     wget
-    gcc
     ripgrep
     nodejs_20
     unzip
     man-pages
+    steam-run
     htop
     git
     vim
     unzip
     rmtrash
     go
+    hugo
+    rustup
     eza
+    wl-clipboard
   ];
   programs.neovim = {
     enable = true;
@@ -55,6 +59,19 @@
      };
   };
 
+  virtualisation.containers.enable = true;
+  virtualisation = {
+    podman = {
+      enable = true;
+
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
+
   # Needed for many programs even on waylan for som reason
   services.xserver.enable = true;
   # Enable the KDE Plasma Desktop Environment.
@@ -65,6 +82,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.systemd.enable = true;
+  systemd.extraConfig = ''DefaultTimeoutStopSec=10s'';
+  systemd.user.extraConfig = "DefaultTimeoutStopSec=10s";
+
   boot.supportedFilesystems = [ "ntfs" ];
 
   fileSystems."/mnt/win" =
@@ -72,6 +92,11 @@
       fsType = "ntfs-3g";
       options = [ "rw" "uid=1000"];
     };
+
+  swapDevices = [{
+    device = "/swapfile";
+    size = 16 * 1024; # 16GB
+  }];
 
   networking.hostName = "desktop-nixos"; # Define your hostname.
 
@@ -86,6 +111,13 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.drivers = [
+    pkgs.gutenprint
+    pkgs.gutenprintBin
+    pkgs.cnijfilter2
+    pkgs.canon-capt
+  ];
+
   hardware.bluetooth.enable = true;
   hardware.enableAllFirmware = true;
 
@@ -93,8 +125,8 @@
   services.usbmuxd.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+  services.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -129,6 +161,13 @@
     layout = "hu";
     variant = "";
   };
+  nix.optimise.automatic = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
+
 
   # Configure console keymap
   console.keyMap = "hu";

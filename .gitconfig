@@ -3,7 +3,13 @@
 [user]
 	name = Norbert Hajagos
 	email = hajagosnorbi@gmail.com
-	signingkey = 807F4444870DB673
+	signingKey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIH1uV0xtQuJJ/Lm+Zzyd3UW8vXGC35OsRogeHZy38ax hajagosnorbi@gmail.com
+[alias]
+	l = "!. ~/.githelpers.sh && pretty_git_log"
+	; la = "!git l --all"
+	; lr = "!git l -30"
+	; lra = "!git lr --all"
+	; lg = "!git l -G $1 -- $2"
 [difftool]
 	prompt = true
 [diff]
@@ -18,3 +24,11 @@
 	tool = nvimdiff2
 [rerere]
 	enabled = true
+[gpg]
+	format = ssh
+[commit]
+	gpgSign = true
+[tag]
+	gpgSign = true
+[gpg "ssh"]
+	allowedSignersFile = /home/ez/.config/git/allowed_signers
