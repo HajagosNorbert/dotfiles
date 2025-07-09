@@ -12,7 +12,11 @@
       // Put key bindings here if you want them to work in normal & visual mode.
       "space s": "file_finder::Toggle",
       "space l f": "editor::Format",
-      "á": "editor::GoToPrevDiagnostic",
+      "alt-left": "workspace::ActivatePaneLeft",
+      "alt-right": "workspace::ActivatePaneRight",
+      "alt-up": "workspace::ActivatePaneUp",
+      "alt-down": "workspace::ActivatePaneDown",
+      "á": "editor::GoToPreviousDiagnostic",
       "é": "editor::GoToDiagnostic"
     }
   },

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -20,6 +20,7 @@
     brave
     vlc
     qbittorrent
+    anki-bin
     ungoogled-chromium
     obsidian
     vscode.fhs
@@ -29,7 +30,7 @@
     ghostty
     wget
     ripgrep
-    nodejs_20
+    nodejs_22
     unzip
     man-pages
     steam-run
@@ -39,11 +40,40 @@
     unzip
     rmtrash
     go
+    cbqn-standalone-replxx
     hugo
     rustup
+    uiua-unstable
     eza
     wl-clipboard
+    inputs.bqnlsp.packages.${pkgs.system}.lsp
   ];
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    acl
+    attr
+    bzip2
+    dbus
+    expat
+    fontconfig
+    freetype
+    fuse3
+    icu
+    libnotify
+    libsodium
+    libssh
+    libunwind
+    libusb1
+    libuuid
+    nspr
+    nss
+    stdenv.cc.cc
+    util-linux
+    zlib
+    zstd
+  ];
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -58,7 +88,6 @@
        max-cache-ttl = 28800;
      };
   };
-
   virtualisation.containers.enable = true;
   virtualisation = {
     podman = {
