@@ -3,10 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    bqnlsp.url = "git+https://git.sr.ht/~detegr/bqnlsp"; 
   };
 
-  outputs = { self, nixpkgs, bqnlsp, ... }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};

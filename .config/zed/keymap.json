@@ -17,6 +17,7 @@
       "alt-up": "workspace::ActivatePaneUp",
       "alt-down": "workspace::ActivatePaneDown",
       "á": "editor::GoToPreviousDiagnostic",
+      "ctrl-y": "agent::Keep",
       "é": "editor::GoToDiagnostic"
     }
   },

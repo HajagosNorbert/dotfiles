@@ -26,7 +26,6 @@
     vscode.fhs
     zed-editor
     libimobiledevice
-    kitty
     ghostty
     wget
     ripgrep
@@ -40,13 +39,10 @@
     unzip
     rmtrash
     go
-    cbqn-standalone-replxx
-    hugo
     rustup
     uiua-unstable
     eza
     wl-clipboard
-    inputs.bqnlsp.packages.${pkgs.system}.lsp
   ];
 
   programs.nix-ld.enable = true;
@@ -111,8 +107,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.systemd.enable = true;
-  systemd.extraConfig = ''DefaultTimeoutStopSec=10s'';
-  systemd.user.extraConfig = "DefaultTimeoutStopSec=10s";
 
   boot.supportedFilesystems = [ "ntfs" ];
 
