@@ -10,6 +10,8 @@
     "context": "VimControl && !menu",
     "bindings": {
       // Put key bindings here if you want them to work in normal & visual mode.
+      "ctrl-alt-up": "vim::SelectLargerSyntaxNode",
+      "ctrl-alt-down": "vim::SelectSmallerSyntaxNode",
       "space s": "file_finder::Toggle",
       "space l f": "editor::Format",
       "alt-left": "workspace::ActivatePaneLeft",

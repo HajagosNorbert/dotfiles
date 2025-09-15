@@ -10,18 +10,16 @@
       ./hardware-configuration.nix
     ];
 
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    kdePackages.kate
     kdePackages.kolourpaint
     gparted
-    brave
     vlc
     qbittorrent
     anki-bin
     ungoogled-chromium
+    vivaldi
     obsidian
     vscode.fhs
     zed-editor
@@ -97,6 +95,9 @@
     };
   };
 
+  environment.sessionVariables = {
+    PATH = [ "$HOME/opt/bin" "$HOME/opt/zig" ];
+  };
   # Needed for many programs even on waylan for som reason
   services.xserver.enable = true;
   # Enable the KDE Plasma Desktop Environment.

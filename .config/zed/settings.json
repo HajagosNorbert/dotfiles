@@ -26,14 +26,14 @@
   "agent": {
     "inline_assistant_model": {
       "provider": "google",
-      "model": "gemini-2.5-pro"
+      "model": "gemini-2.5-flash"
     },
     "always_allow_tool_actions": true,
     "default_profile": "write",
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-sonnet-4"
-    },
+    }
   },
   "vim_mode": true,
   "ui_font_size": 14,
