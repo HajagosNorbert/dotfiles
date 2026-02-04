@@ -1,0 +1,31 @@
+# Disable all git-related modules
+[git_branch]
+disabled = true
+
+[git_commit] 
+disabled = true
+
+[git_state]
+disabled = true
+
+[git_metrics]
+disabled = true
+
+[git_status]
+disabled = true
+
+[package]
+format = '[$symbol$version]($style) '
+symbol = '📦'
+
+[nodejs]
+format = '[$symbol]($style)'
+
+[nix_shell]
+format = '[$symbol]($style)'
+
+[directory]
+truncation_length = 5
+repo_root_style = 'bold red'
+repo_root_format = '[$before_root_path]($before_repo_root_style)[ ](red)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) '
+format = '[$path]($style)[$read_only]($read_only_style) '

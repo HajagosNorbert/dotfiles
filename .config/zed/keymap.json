@@ -18,9 +18,7 @@
       "alt-right": "workspace::ActivatePaneRight",
       "alt-up": "workspace::ActivatePaneUp",
       "alt-down": "workspace::ActivatePaneDown",
-      "á": "editor::GoToPreviousDiagnostic",
-      "ctrl-y": "agent::Keep",
-      "é": "editor::GoToDiagnostic"
+      "ctrl-y": "agent::Keep"
     }
   },
   {
@@ -34,14 +32,10 @@
     "context": "Workspace",
     "bindings": {
       // "space e": "workspace::ToggleLeftDock",
-      "alt-p": "terminal_panel::ToggleFocus"
+      "alt-p": "terminal_panel::ToggleFocus",
       // "shift shift": "file_finder::Toggle"
-    }
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      // "j k": ["workspace::SendKeystrokes", "escape"]
+      "ctrl-shift-s": "workspace::SaveAll",
+      "ctrl-k ctrl-s": null
     }
   }
 ]

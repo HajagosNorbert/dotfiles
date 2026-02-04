@@ -33,14 +33,19 @@
     steam-run
     htop
     git
+    jujutsu
     vim
     unzip
     rmtrash
+    gcc
     go
     rustup
     uiua-unstable
     eza
     wl-clipboard
+    gemini-cli-bin
+    podman-compose
+    opencode
   ];
 
   programs.nix-ld.enable = true;
@@ -74,6 +79,8 @@
   };
   programs.direnv.enable = true;
   programs.fish.enable = true;
+  programs.starship.enable = true;
+
   programs.gnupg.agent = {
      enable = true;
      enableSSHSupport = true;
@@ -134,13 +141,13 @@
   services.fstrim.enable = true;
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
-  services.printing.drivers = [
-    pkgs.gutenprint
-    pkgs.gutenprintBin
-    pkgs.cnijfilter2
-    pkgs.canon-capt
-  ];
+  # services.printing.enable = true;
+  # services.printing.drivers = [
+  #   pkgs.gutenprint
+  #   pkgs.gutenprintBin
+  #   pkgs.cnijfilter2
+  #   pkgs.canon-capt
+  # ];
 
   hardware.bluetooth.enable = true;
   hardware.enableAllFirmware = true;

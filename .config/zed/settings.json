@@ -8,7 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "edit_predictions": {
-    "mode": "eager",
+    "mode": "subtle",
     "copilot": {
       "proxy": null,
       "proxy_no_verify": null,
@@ -16,23 +16,32 @@
     },
     "enabled_in_text_threads": false
   },
-  "theme": "Duskfox",
+  "theme": "Duskfox - opaque",
   "file_types": {
-    "xml": ["xmlui"]
+    "xml": ["xmlui"],
+    "Ruby": ["roc"]
   },
   "features": {
     // "inline_completion_provider": "zed"
   },
   "agent": {
     "inline_assistant_model": {
-      "provider": "google",
-      "model": "gemini-2.5-flash"
+      "provider": "openai",
+      "model": "gpt-4.1"
     },
     "always_allow_tool_actions": true,
     "default_profile": "write",
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "provider": "google",
+      "model": "gemini-3-pro-preview"
+    }
+  },
+  "context_servers": {
+    "some-mcp-server": {
+      "enabled": true,
+      "command": "/home/ez/code/work/cli/xmlui",
+      "args": ["mcp"],
+      "env": {}
     }
   },
   "vim_mode": true,
@@ -41,11 +50,6 @@
   "tab_bar": {
     "show": true,
     "show_nav_history_buttons": false
-  },
-  "git": {
-    "inline_blame": {
-      "enabled": false
-    }
   },
   "inlay_hints": {
     "enabled": true,
@@ -57,11 +61,11 @@
   "preview_tabs": {
     "enabled": true,
     "enable_preview_from_file_finder": true,
-    "enable_preview_from_code_navigation": true
+    "enable_keep_preview_on_code_navigation": true
   },
   "soft_wrap": "editor_width",
   "terminal": {
-    "line_height": "standard"
+    "dock": "right"
   },
   "languages": {
     "TypeScript": {
