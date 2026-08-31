@@ -9,16 +9,21 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+ 
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    kdePackages.ksshaskpass
     kdePackages.kolourpaint
     gparted
-    vlc
     qbittorrent
     anki-bin
     ungoogled-chromium
+    google-chrome
     vivaldi
     obsidian
     vscode.fhs
@@ -40,13 +45,24 @@
     gcc
     go
     rustup
-    uiua-unstable
     eza
     wl-clipboard
-    gemini-cli-bin
     podman-compose
     opencode
+    obs-studio
+    calibre
+    quickemu
+    mpv
+    zola
+    dotnet-sdk_10
+    beekeeper-studio
+    remmina
   ];
+
+  environment.sessionVariables = {
+    DOTNET_ROOT = "${pkgs.dotnet-sdk_10}/share/dotnet";
+    DOTNET_ROOT_X64 = "${pkgs.dotnet-sdk_10}/share/dotnet";
+  };
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -89,16 +105,16 @@
        max-cache-ttl = 28800;
      };
   };
-  virtualisation.containers.enable = true;
-  virtualisation = {
-    podman = {
+
+  # virtualisation.containers.enable = true;
+  virtualisation.docker = {
+    # Consider disabling the system wide Docker daemon
+    enable = false;
+    storageDriver = "btrfs";
+
+    rootless = {
       enable = true;
-
-      # Create a `docker` alias for podman, to use it as a drop-in replacement
-      dockerCompat = true;
-
-      # Required for containers under podman-compose to be able to talk to each other.
-      defaultNetwork.settings.dns_enabled = true;
+      setSocketVariable = true;
     };
   };
 
@@ -132,7 +148,12 @@
   networking.hostName = "desktop-nixos"; # Define your hostname.
 
   # Enable networking
-  networking.networkmanager.enable = true;
+networking.networkmanager = {
+    enable = true;
+    plugins = with pkgs; [
+      networkmanager-openvpn
+    ];
+  };
 
   # should be bettern, but still buggy
   # networking.networkmanager.wifi.backend = "iwd";

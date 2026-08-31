@@ -2,4 +2,4 @@
 # VERSION: 3.0
 SETUVAR __fish_initialized:4300
 SETUVAR fish_greeting:
-SETUVAR fish_user_paths:/home/ez/opt/zig\x1e/home/ez/opt/bin\x1e/home/ez/go/bin\x1e/home/ez/code/roc/result/bin\x1e/home/ez/\x2enpm/bin\x1e/home/ez/code/roc/target/release
+SETUVAR fish_user_paths:/home/ez/\x2elocal/bin\x1e/home/ez/opt/zig\x1e/home/ez/opt/bin\x1e/home/ez/go/bin\x1e/home/ez/code/roc/result/bin\x1e/home/ez/\x2enpm/bin\x1e/home/ez/code/roc/target/release

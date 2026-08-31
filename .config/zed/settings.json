@@ -7,65 +7,90 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "git_panel": {
+    "dock": "left",
+  },
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry",
+    },
+    "github-copilot-cli": {
+      "type": "registry",
+    },
+    "opencode": {
+      "type": "registry",
+    },
+  },
   "edit_predictions": {
     "mode": "subtle",
     "copilot": {
       "proxy": null,
       "proxy_no_verify": null,
-      "enterprise_uri": null
+      "enterprise_uri": null,
     },
-    "enabled_in_text_threads": false
+    "enabled_in_text_threads": false,
   },
   "theme": "Duskfox - opaque",
   "file_types": {
-    "xml": ["xmlui"],
-    "Ruby": ["roc"]
-  },
-  "features": {
-    // "inline_completion_provider": "zed"
+    "XML": ["*.xmlui"],
+    "Ruby": ["*.roc"],
   },
   "agent": {
-    "inline_assistant_model": {
-      "provider": "openai",
-      "model": "gpt-4.1"
+    "dock": "right",
+    "tool_permissions": {
+      "default": "allow",
     },
-    "always_allow_tool_actions": true,
-    "default_profile": "write",
+    "inline_assistant_model": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+    },
+    "default_profile": "ask",
     "default_model": {
-      "provider": "google",
-      "model": "gemini-3-pro-preview"
-    }
+      "effort": "high",
+      "enable_thinking": true,
+      "provider": "deepseek",
+      "model": "deepseek-v4-pro",
+    },
   },
   "context_servers": {
     "some-mcp-server": {
       "enabled": true,
       "command": "/home/ez/code/work/cli/xmlui",
       "args": ["mcp"],
-      "env": {}
-    }
+      "env": {},
+    },
   },
   "vim_mode": true,
   "ui_font_size": 14,
   "buffer_font_size": 15.0,
   "tab_bar": {
     "show": true,
-    "show_nav_history_buttons": false
+    "show_nav_history_buttons": false,
   },
   "inlay_hints": {
-    "enabled": true,
-    "show_type_hints": true,
+    "enabled": false,
+    "show_type_hints": false,
     "show_parameter_hints": false,
     "show_other_hints": false,
-    "show_background": false
+    "show_background": false,
   },
   "preview_tabs": {
     "enabled": true,
     "enable_preview_from_file_finder": true,
-    "enable_keep_preview_on_code_navigation": true
+    "enable_keep_preview_on_code_navigation": true,
   },
   "soft_wrap": "editor_width",
   "terminal": {
-    "dock": "right"
+    "dock": "right",
   },
   "languages": {
     "TypeScript": {
@@ -73,17 +98,17 @@
       "formatter": {
         "external": {
           "command": "npx",
-          "arguments": ["prettier", "--stdin-filepath", "{buffer_path}"]
-        }
+          "arguments": ["prettier", "--stdin-filepath", "{buffer_path}"],
+        },
       },
       "inlay_hints": {
-        "enabled": false
+        "enabled": false,
       },
-      "format_on_save": "on"
+      "format_on_save": "on",
     },
     "HTML": {
-      "tab_size": 2
-    }
+      "tab_size": 2,
+    },
   },
-  "format_on_save": "on"
+  "format_on_save": "on",
 }
