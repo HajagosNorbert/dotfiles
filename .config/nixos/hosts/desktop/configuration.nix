@@ -22,20 +22,17 @@
     gparted
     qbittorrent
     anki-bin
-    ungoogled-chromium
     google-chrome
     vivaldi
     obsidian
     vscode.fhs
     zed-editor
-    libimobiledevice
     ghostty
     wget
     ripgrep
     nodejs_22
     unzip
     man-pages
-    steam-run
     htop
     git
     jujutsu
@@ -54,15 +51,13 @@
     quickemu
     mpv
     zola
-    dotnet-sdk_10
-    beekeeper-studio
     remmina
   ];
 
-  environment.sessionVariables = {
-    DOTNET_ROOT = "${pkgs.dotnet-sdk_10}/share/dotnet";
-    DOTNET_ROOT_X64 = "${pkgs.dotnet-sdk_10}/share/dotnet";
-  };
+  # environment.sessionVariables = {
+  #   DOTNET_ROOT = "${pkgs.dotnet-sdk_10}/share/dotnet";
+  #   DOTNET_ROOT_X64 = "${pkgs.dotnet-sdk_10}/share/dotnet";
+  # };
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -217,7 +212,7 @@ networking.networkmanager = {
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 14d";
+    options = "--delete-older-than 25d";
   };
 
 

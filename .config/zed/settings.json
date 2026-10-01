@@ -45,6 +45,9 @@
     "Ruby": ["*.roc"],
   },
   "agent": {
+    "sandbox_permissions": {
+      "allow_unsandboxed": true
+    },
     "dock": "right",
     "tool_permissions": {
       "default": "allow",
@@ -53,7 +56,7 @@
       "provider": "deepseek",
       "model": "deepseek-v4-flash",
     },
-    "default_profile": "ask",
+    "default_profile": "write",
     "default_model": {
       "effort": "high",
       "enable_thinking": true,
